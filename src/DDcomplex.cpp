@@ -362,14 +362,17 @@ namespace dd {
             std::cout << "1" << std::endl;
             r.r->val = 1.;
             r.i->val = 0.;
+            std::cout << "1e" << std::endl;
         } else if (equalsZero(a)) {
             std::cout << "2" << std::endl;
             r.r->val = 0.;
             r.i->val = 0.;
+            std::cout << "2e" << std::endl;
         } else if (equalsOne(b)) {
             std::cout << "3" << std::endl;
             r.r->val = val(a.r);
             r.i->val = val(a.i);
+            std::cout << "3e" << std::endl;
         } else {
             std::cout << "4" << std::endl;
 	        auto ar = val(a.r);
@@ -381,6 +384,7 @@ namespace dd {
 
 	        r.r->val = (ar * br + ai * bi) / cmag;
 	        r.i->val = (ai * br - ar * bi) / cmag;
+            std::cout << "4e" << std::endl;
 	   	}
     }
 
