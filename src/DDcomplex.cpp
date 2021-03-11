@@ -137,37 +137,45 @@ namespace dd {
         const auto key = getKey(val);
 
         auto p = ComplexTable[key];
-        std::cout << "PTYPE------: " << typeid(p).name() << std::endl;
+        auto minp = p;
+        fp mindis = TOLERANCE;
         while (p != nullptr) {
-            if (std::fabs(p->val - val) < TOLERANCE) {
-                return p;
+            if (std::fabs(p->val - val) < mindis) {
+                mindis = std::fabs(p->val - val);
+                minp = p;
             }
             p = p->next;
         }
+        if (p != nullptr) return minp;
 
+        mindis = TOLERANCE;
         if (val - TOLERANCE >= 0) {
             const auto key2 = getKey(val - TOLERANCE);
             if (key2 != key) {
                 p = ComplexTable[key2];
                 while (p != nullptr) {
-                    if (std::fabs(p->val - val) < TOLERANCE) {
-                        return p;
+                    if (std::fabs(p->val - val) < mindis) {
+                        mindis = std::fabs(p->val - val);
+                        minp = p;
                     }
                     p = p->next;
                 }
+                if (p != nullptr) return minp;
             }
         }
 
         const auto key3 = getKey(val + TOLERANCE);
-
+        mindis = TOLERANCE;
         if (key3 != key) {
             p = ComplexTable[key3];
             while (p != nullptr) {
-                if (std::fabs(p->val - val) < TOLERANCE) {
-                    return p;
+                if (std::fabs(p->val - val) < mindis) {
+                    mindis = std::fabs(p->val - val);
+                    minp = p;
                 }
                 p = p->next;
             }
+            if (p != nullptr) return minp;
         }
 
         ct_miss++;
