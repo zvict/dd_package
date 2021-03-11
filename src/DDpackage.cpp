@@ -148,81 +148,8 @@ namespace dd {
 
         /// --- Matrix treatment ---
         if (mode == Mode::Matrix || !zero[1] || !zero[3]) {
-            // fp max = 0.L;
-            // Complex maxc = ComplexNumbers::ONE;
-            // // determine max amplitude
-            // for (int i = 0; i < NEDGE; ++i) {
-            //     if (zero[i]) continue;
-            //     if (argmax == -1) {
-            //         argmax = i;
-            //         max = ComplexNumbers::mag2(e.p->e[i].w);
-            //         maxc = e.p->e[i].w;
-            //     } else {
-            //         auto mag = ComplexNumbers::mag2(e.p->e[i].w);
-            //         if (mag - max > CN::TOLERANCE) {
-            //             argmax = i;
-            //             max = mag;
-            //             maxc = e.p->e[i].w;
-            //         }
-            //     }
-            // }
-
-            // // all equal to zero - make sure to release cached numbers approximately zero, but not exactly zero
-            // if (argmax == -1) {
-            //     if (cached) {
-            //         for (auto const &i : e.p->e) {
-            //             if (i.w != CN::ZERO) {
-            //                 cn.releaseCached(i.w);
-            //             }
-            //         }
-            //     } else if (&e.p != &DDzero.p) {
-            //         // If it is not a cached variable, I have to put it pack into the chain
-            //         e.p->next = nodeAvail;
-            //         nodeAvail = e.p;
-            //     }
-            //     return DDzero;
-            // }
-
-            // auto r = e;
-            // // divide each entry by max
-            // for (int i = 0; i < NEDGE; ++i) {
-            //     if (i == argmax) {
-            //         if (cached) {
-            //             if (r.w == ComplexNumbers::ONE)
-            //                 r.w = maxc;
-            //             else
-            //                 CN::mul(r.w, r.w, maxc);
-            //         } else {
-            //             if (r.w == ComplexNumbers::ONE) {
-            //                 r.w = maxc;
-            //             } else {
-            //                 auto c = cn.getTempCachedComplex();
-            //                 CN::mul(c, r.w, maxc);
-            //                 r.w = cn.lookup(c);
-            //             }
-            //         }
-            //         r.p->e[i].w = ComplexNumbers::ONE;
-            //     } else {
-            //         if (zero[i]) {
-            //             if (cached && r.p->e[i].w != ComplexNumbers::ZERO)
-            //                 cn.releaseCached(r.p->e[i].w);
-            //             r.p->e[i] = DDzero;
-            //             continue;
-            //         }
-            //         if (cached && !zero[i] && r.p->e[i].w != ComplexNumbers::ONE) {
-            //             cn.releaseCached(r.p->e[i].w);
-            //         }
-            //         if (CN::equalsOne(r.p->e[i].w))
-            //             r.p->e[i].w = ComplexNumbers::ONE;
-            //         auto c = cn.getTempCachedComplex();
-            //         CN::div(c, r.p->e[i].w, maxc);
-            //         r.p->e[i].w = cn.lookup(c);
-            //     }
-            // }
-            // return r;
 
             fp sum = 0.L;
-            Complex maxc = ComplexNumbers::ONE;
 
             for (int i = 0; i < NEDGE; ++i) {
                 if (zero[i]) continue;
@@ -232,6 +159,7 @@ namespace dd {
 
             sum = std::sqrt(sum);
             auto sumc = cn.lookup(sum, 0);
+            std::cout << "SUM: " << sum << std::endl;
 
             // all equal to zero - make sure to release cached numbers approximately zero, but not exactly zero
             if (argmax == -1) {
