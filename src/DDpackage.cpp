@@ -132,6 +132,7 @@ namespace dd {
     }
 
     Edge Package::normalize(const Edge &e, bool cached) {
+        std::cout << "NORMALIZING" << std::endl;
         int argmax = -1;
 
         bool zero[] = {CN::equalsZero(e.p->e[0].w),
