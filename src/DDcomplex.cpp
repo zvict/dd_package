@@ -139,28 +139,33 @@ namespace dd {
         auto p = ComplexTable[key];
         auto minp = p;
         fp mindis = TOLERANCE;
+        bool find = false;
         while (p != nullptr) {
             if (std::fabs(p->val - val) < mindis) {
                 mindis = std::fabs(p->val - val);
                 minp = p;
+                find = true;
             }
             p = p->next;
         }
-        if (p != nullptr) return minp;
+        if (find) return minp;
 
         mindis = TOLERANCE;
         if (val - TOLERANCE >= 0) {
             const auto key2 = getKey(val - TOLERANCE);
             if (key2 != key) {
                 p = ComplexTable[key2];
+                minp = p;
+                find = false;
                 while (p != nullptr) {
                     if (std::fabs(p->val - val) < mindis) {
                         mindis = std::fabs(p->val - val);
                         minp = p;
+                        find = true;
                     }
                     p = p->next;
                 }
-                if (p != nullptr) return minp;
+                if (find) return minp;
             }
         }
 
@@ -168,14 +173,17 @@ namespace dd {
         mindis = TOLERANCE;
         if (key3 != key) {
             p = ComplexTable[key3];
+            minp = p;
+            find = false;
             while (p != nullptr) {
                 if (std::fabs(p->val - val) < mindis) {
                     mindis = std::fabs(p->val - val);
                     minp = p;
+                    find = true;
                 }
                 p = p->next;
             }
-            if (p != nullptr) return minp;
+            if (find) return minp;
         }
 
         ct_miss++;
