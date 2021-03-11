@@ -39,7 +39,7 @@ TEST(DDPackageTest, TrivialTest) {
 
     ASSERT_EQ(dd->getValueByPath(h_gate, "0"), (dd::ComplexValue{dd::SQRT_2, 0}));
 
-    dd::Edge zero_state = dd->makeZeroState(1);
+    dd::Edge zero_state = dd->makeZeroState(10);
     dd::Edge h_state = dd->multiply(h_gate, zero_state);
     dd::Edge one_state = dd->multiply(x_gate, zero_state);
 
