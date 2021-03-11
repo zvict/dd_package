@@ -137,6 +137,7 @@ namespace dd {
         const auto key = getKey(val);
 
         auto p = ComplexTable[key];
+        std::cout << "PTYPE------: " << typeid(p).name() << std::endl;
         while (p != nullptr) {
             if (std::fabs(p->val - val) < TOLERANCE) {
                 return p;
