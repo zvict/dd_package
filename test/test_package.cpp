@@ -8,7 +8,7 @@
 
 TEST(DDPackageTest, OperationLookupTest) {
     auto dd = std::make_unique<dd::Package>();
-    short line[2] = {2};
+    short line[20] = {2};
 
     // dd::ATrue is not the operation that is being stored, but for the test it doesn't matter
     auto tmp_op = dd->OperationLookup(dd::ATrue, line, 1);
@@ -39,7 +39,7 @@ TEST(DDPackageTest, TrivialTest) {
 
     ASSERT_EQ(dd->getValueByPath(h_gate, "0"), (dd::ComplexValue{dd::SQRT_2, 0}));
 
-    dd::Edge zero_state = dd->makeZeroState(10);
+    dd::Edge zero_state = dd->makeZeroState(1);
     dd::Edge h_state = dd->multiply(h_gate, zero_state);
     dd::Edge one_state = dd->multiply(x_gate, zero_state);
 
