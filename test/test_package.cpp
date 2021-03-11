@@ -8,10 +8,10 @@
 
 TEST(DDPackageTest, OperationLookupTest) {
     auto dd = std::make_unique<dd::Package>();
-    short line[20] = {2};
+    short line[2] = {2};
 
     // dd::ATrue is not the operation that is being stored, but for the test it doesn't matter
-    auto tmp_op = dd->OperationLookup(dd::ATrue, line, 1);
+    auto tmp_op = dd->OperationLookup(dd::ATrue, line, 10);
     EXPECT_TRUE(tmp_op.p == nullptr);
 
     dd::Edge x_gate = dd->makeGateDD(Xmat, 1, line);
