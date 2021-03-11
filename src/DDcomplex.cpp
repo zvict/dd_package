@@ -381,10 +381,12 @@ namespace dd {
 	        auto bi = val(b.i);
 
 	        auto cmag = br * br + bi * bi;
-            std::cout << "CMAG" << cmag << std::endl;
+            std::cout << "CMAG: " << cmag << std::endl;
 
 	        r.r->val = (ar * br + ai * bi) / cmag;
+            std::cout << "r.r->val: " << r.r->val << std::endl;
 	        r.i->val = (ai * br - ar * bi) / cmag;
+            std::cout << "r.i->val: " << r.i->val << std::endl;
             std::cout << "4e" << std::endl;
 	   	}
     }
