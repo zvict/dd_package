@@ -235,6 +235,8 @@ namespace dd {
             }
         }
 
+        std::cout << "VECTOR" << sum << std::endl;
+
         if (argmax == -1) {
             if (cached) {
                 for (auto &i : e.p->e) {
