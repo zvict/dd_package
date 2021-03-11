@@ -359,15 +359,19 @@ namespace dd {
     void ComplexNumbers::div(Complex &r, const Complex &a, const Complex &b) {
 	    assert(r != ZERO && r != ONE);
 	   	if (equals(a, b)) {
+            std::cout << "1" << std::endl;
             r.r->val = 1.;
             r.i->val = 0.;
         } else if (equalsZero(a)) {
+            std::cout << "2" << std::endl;
             r.r->val = 0.;
             r.i->val = 0.;
         } else if (equalsOne(b)) {
+            std::cout << "3" << std::endl;
             r.r->val = val(a.r);
             r.i->val = val(a.i);
         } else {
+            std::cout << "4" << std::endl;
 	        auto ar = val(a.r);
 	        auto ai = val(a.i);
 	        auto br = val(b.r);
