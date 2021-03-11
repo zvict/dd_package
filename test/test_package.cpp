@@ -31,22 +31,22 @@ TEST(DDPackageTest, OperationLookupTest) {
 
 
 
-TEST(DDPackageTest, TrivialTest) {
-    auto dd = std::make_unique<dd::Package>();
+// TEST(DDPackageTest, TrivialTest) {
+//     auto dd = std::make_unique<dd::Package>();
 
-    dd::Edge x_gate = dd->makeGateDD(Xmat, 1, {2});
-    dd::Edge h_gate = dd->makeGateDD(Hmat, 1, {2});
+//     dd::Edge x_gate = dd->makeGateDD(Xmat, 1, {2});
+//     dd::Edge h_gate = dd->makeGateDD(Hmat, 1, {2});
 
-    ASSERT_EQ(dd->getValueByPath(h_gate, "0"), (dd::ComplexValue{dd::SQRT_2, 0}));
+//     ASSERT_EQ(dd->getValueByPath(h_gate, "0"), (dd::ComplexValue{dd::SQRT_2, 0}));
 
-    dd::Edge zero_state = dd->makeZeroState(1);
-    dd::Edge h_state = dd->multiply(h_gate, zero_state);
-    dd::Edge one_state = dd->multiply(x_gate, zero_state);
+//     dd::Edge zero_state = dd->makeZeroState(1);
+//     dd::Edge h_state = dd->multiply(h_gate, zero_state);
+//     dd::Edge one_state = dd->multiply(x_gate, zero_state);
 
-    ASSERT_EQ(dd->fidelity(zero_state, one_state), 0.0);
-    ASSERT_NEAR(dd->fidelity(zero_state, h_state), 0.5, dd::ComplexNumbers::TOLERANCE);
-    ASSERT_NEAR(dd->fidelity(one_state, h_state), 0.5, dd::ComplexNumbers::TOLERANCE);
-}
+//     ASSERT_EQ(dd->fidelity(zero_state, one_state), 0.0);
+//     ASSERT_NEAR(dd->fidelity(zero_state, h_state), 0.5, dd::ComplexNumbers::TOLERANCE);
+//     ASSERT_NEAR(dd->fidelity(one_state, h_state), 0.5, dd::ComplexNumbers::TOLERANCE);
+// }
 
 // TEST(DDPackageTest, BellState) {
 //     auto dd = std::make_unique<dd::Package>();
